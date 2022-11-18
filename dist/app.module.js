@@ -22,12 +22,10 @@ AppModule = __decorate([
             qualification_module_1.QualificationModule,
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'oracle',
-                host: '172.16.7.197',
-                port: 1535,
                 username: 'APP_SOY_UTEISTA',
                 password: 'vJKD!zYU!8RD',
                 synchronize: true,
-                'serviceName': 'ORAPROUTS'
+                connectString: "172.16.7.197:1535/ORAPROUTS"
             }),
         ],
         controllers: [],

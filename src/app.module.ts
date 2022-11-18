@@ -11,12 +11,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     QualificationModule,
     TypeOrmModule.forRoot({
       type: 'oracle',
-      host: '172.16.7.197',
-      port: 1535,
       username: 'APP_SOY_UTEISTA',
       password: 'vJKD!zYU!8RD',
       synchronize: true,
-      'serviceName' : 'ORAPROUTS'
+      connectString: "172.16.7.197:1535/ORAPROUTS"
     }),
   ],
   controllers: [],

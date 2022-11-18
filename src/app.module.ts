@@ -15,8 +15,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       port: 1535,
       username: 'APP_SOY_UTEISTA',
       password: 'vJKD!zYU!8RD',
-      schema: 'ORAPROUTS',
-      synchronize: true
+      synchronize: true,
+      'serviceName' : 'ORAPROUTS'
     }),
   ],
   controllers: [],

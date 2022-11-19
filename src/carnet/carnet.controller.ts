@@ -6,7 +6,7 @@ import { CarnetService } from './carnet.service';
 export class CarnetController {
   constructor(private readonly carnetService: CarnetService) {}
 
-  @Get()
+  @Get(':correo')
   findAll(@Param('correo') correo : string) {
     return this.carnetService.findAll(correo);
   }

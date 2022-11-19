@@ -1,16 +1,18 @@
 import { Injectable } from '@nestjs/common';
-import { Connection } from 'typeorm';
+import { InjectDataSource } from '@nestjs/typeorm';
+import { DataSource } from 'typeorm';
 
 @Injectable()
 export class CarnetService {
 
 
   constructor(
-    private readonly connection: Connection
+    @InjectDataSource()
+    private readonly dataSource: DataSource
   ) {}
 
   async findAll( correo: string) {
-    const result = await this.connection.query(`select * from table(academico.RETURN_OBJECTS_APP_HORARIO(${correo}))`)
+    const result = await this.dataSource.query(`select * from table(academico.RETURN_OBJECTS_APP_CARNE('${correo}'))`)
     return {result};
   }
 

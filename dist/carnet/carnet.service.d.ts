@@ -1,7 +1,7 @@
-import { Connection } from 'typeorm';
+import { DataSource } from 'typeorm';
 export declare class CarnetService {
-    private readonly connection;
-    constructor(connection: Connection);
+    private readonly dataSource;
+    constructor(dataSource: DataSource);
     findAll(correo: string): Promise<{
         result: any;
     }>;

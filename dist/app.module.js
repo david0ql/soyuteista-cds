@@ -25,6 +25,7 @@ AppModule = __decorate([
                 username: 'APP_SOY_UTEISTA',
                 password: 'vJKD!zYU!8RD',
                 synchronize: true,
+                'sid': 'XE',
                 connectString: "172.16.7.197:1535/ORAPROUTS"
             }),
         ],

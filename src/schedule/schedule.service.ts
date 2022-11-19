@@ -1,26 +1,19 @@
-import { Injectable } from '@nestjs/common';
-import { CreateScheduleDto } from './dto/create-schedule.dto';
-import { UpdateScheduleDto } from './dto/update-schedule.dto';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectDataSource } from '@nestjs/typeorm';
+import { DataSource } from 'typeorm';
 
 @Injectable()
 export class ScheduleService {
-  create(createScheduleDto: CreateScheduleDto) {
-    return 'This action adds a new schedule';
+
+  constructor(
+    @InjectDataSource()
+    private readonly dataSource: DataSource
+  ) {}
+
+  async findOne(correo: string) {
+    const result = await this.dataSource.query(`select * from table(academico.RETURN_OBJECTS_APP_HORARIO('${correo}'))`);
+    if (result.length === 0) throw new NotFoundException("No encontramos el horario del estudiante")
+    return {result};
   }
 
-  findAll() {
-    return `This action returns all schedule`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} schedule`;
-  }
-
-  update(id: number, updateScheduleDto: UpdateScheduleDto) {
-    return `This action updates a #${id} schedule`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} schedule`;
-  }
 }

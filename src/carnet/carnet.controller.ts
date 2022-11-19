@@ -8,7 +8,7 @@ export class CarnetController {
 
   @Get(':correo')
   findAll(@Param('correo') correo : string) {
-    return this.carnetService.findAll(correo);
+    return this.carnetService.findOne(correo);
   }
 
 }

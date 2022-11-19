@@ -9,9 +9,9 @@ export class CarnetService {
     private readonly dataSource: DataSource
   ) {}
 
-  async findAll( correo: string) {
+  async findOne( correo: string) {
     const result = await this.dataSource.query(`select * from table(academico.RETURN_OBJECTS_APP_CARNE('${correo}'))`);
-    if (!result) throw new NotFoundException("No encontramos el estudiante")
+    if (result.length === 0) throw new NotFoundException("No encontramos el carnet del estudiante")
     return {result};
   }
 
